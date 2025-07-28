@@ -3,6 +3,7 @@ const jwt=require('jsonwebtoken');
 const mongoose=require('mongoose');
 const { userRouter } = require('./routes/user');
 const { courseRouter } = require('./routes/course');
+const {adminRouter} = require('./routes/admin');
 
 const app=express();
 app.use(express.json());
@@ -10,7 +11,6 @@ mongoose.connect("mongodb+srv://sengardeep2006:deepRAJ%4019@cluster0.d8emwyn.mon
 
 app.use('/user',userRouter);
 app.use('/course',courseRouter);
-
-
+app.use('/admin',adminRouter);
 
 app.listen(3000);
