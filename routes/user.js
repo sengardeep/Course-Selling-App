@@ -5,7 +5,9 @@ const userRouter = Router();
 
 userRouter.post('/signup', (req, res) => {
     const { username, password } = req.body;
-
+    res.json({
+        msg:"Signed up"
+    })
 });
 
 userRouter.post('/signin', (req, res) => {
