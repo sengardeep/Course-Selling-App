@@ -7,10 +7,15 @@ const {adminRouter} = require('./routes/admin');
 
 const app=express();
 app.use(express.json());
-mongoose.connect("mongodb+srv://sengardeep2006:deepRAJ%4019@cluster0.d8emwyn.mongodb.net/course-selling-app")
 
 app.use('/user',userRouter);
 app.use('/course',courseRouter);
 app.use('/admin',adminRouter);
 
-app.listen(3000);
+async function main(){
+    await mongoose.connect("mongodb+srv://sengardeep2006:deepRAJ%4019@cluster0.d8emwyn.mongodb.net/course-selling-app")
+    app.listen(3000,()=>{
+        console.log("Listening to port 3000");
+    });
+}
+main();
