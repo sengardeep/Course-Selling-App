@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { adminModel } = require('../db');
+const { courseModel } = require('../db');
 const adminRouter = Router();
 const { z } = require('zod');
 const jwt = require('jsonwebtoken');

@@ -7,7 +7,7 @@ function adminMiddleware(req,res,next){
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    jwt.verify(token, JWT_USER_PASSWORD, (err, decoded) => {
+    jwt.verify(token, JWT_ADMIN_SECRET, (err, decoded) => {
         if (err) {
             return res.status(403).json({ message: 'Forbidden' });
         }

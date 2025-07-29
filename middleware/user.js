@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const {JWT_USER_PASSWORD}=require('../config');
+const {JWT_USER_SECRET}=require('../config');
 
 function userMiddleware(req,res,next){
     const token = req.headers.token;
@@ -7,7 +7,7 @@ function userMiddleware(req,res,next){
         return res.status(401).json({ message: 'Unauthorized' });
     }
 
-    jwt.verify(token, JWT_USER_PASSWORD, (err, decoded) => {
+    jwt.verify(token, JWT_USER_SECRET, (err, decoded) => {
         if (err) {
             return res.status(403).json({ message: 'Forbidden' });
         }
