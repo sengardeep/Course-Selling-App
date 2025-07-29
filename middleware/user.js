@@ -11,7 +11,7 @@ function userMiddleware(req,res,next){
         if (err) {
             return res.status(403).json({ message: 'Forbidden' });
         }
-        req.userId = decoded;
+        req.userId = decoded.id;
         next();
     });
 }
