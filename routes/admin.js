@@ -74,18 +74,43 @@ adminRouter.post('/course', async (req, res) => {
 
     res.status(201).json({
         message: 'Course created successfully',
-        course: course
+        course: course,
+        courseId: course._id
     });
 });
 
 //Updating the course
 adminRouter.put('/course', async (req, res) => {
-    const { id, title, description, price } = req.body;
+    const adminId = req.userId;
+    const { title, description, imageUrl, price, courseId } = req.body;
     // Logic to update course details
+
+    //Find the course by ID and adminId to ensure only the admin can update it
+    const courseExists = await courseModel.findOne({ _id: courseId, adminId: adminId });
+    if (!courseExists) {
+        return res.status(404).json({ error: 'Course not found or you do not have permission to update it' });
+    }
+    const course = await courseModel.updateOne(
+        { _id: courseId, adminId: adminId },
+        { title: title, description: description, imageUrl: imageUrl, price: price }
+    );
+
+    res.status(200).json({
+        message: 'Course updated successfully',
+        course: course
+    });
 });
 
 adminRouter.get('/course', async (req, res) => {
-
+    const adminId = req.userId;
+    
+    const courses = await courseModel.find({
+        adminId: adminId
+    });
+    res.status(200).json({
+        message: 'Courses fetched successfully',
+        courses: courses
+    });
 });
 
 

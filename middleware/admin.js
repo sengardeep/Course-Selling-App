@@ -9,9 +9,9 @@ function adminMiddleware(req,res,next){
 
     jwt.verify(token, JWT_ADMIN_SECRET, (err, decoded) => {
         if (err) {
-            return res.status(403).json({ message: 'Forbidden' });
+            return res.status(403).json({ message: 'Forbidden', error: err.message });
         }
-        req.userId = decoded;
+        req.userId = decoded.id;
         next();
     });
 }
