@@ -104,13 +104,32 @@ adminRouter.put('/course', async (req, res) => {
 adminRouter.get('/course', async (req, res) => {
     const adminId = req.userId;
     
-    const courses = await courseModel.find({
-        adminId: adminId
-    });
-    res.status(200).json({
-        message: 'Courses fetched successfully',
-        courses: courses
-    });
+    try {
+        const courses = await courseModel.find({
+            adminId: adminId
+        });
+
+        // Get purchase statistics for each course
+        const coursesWithStats = await Promise.all(courses.map(async (course) => {
+            const purchaseCount = await purchaseModel.countDocuments({
+                courseId: course._id
+            });
+            
+            return {
+                ...course.toObject(),
+                purchaseCount: purchaseCount,
+                revenue: purchaseCount * course.price
+            };
+        }));
+
+        res.status(200).json({
+            message: 'Courses fetched successfully',
+            courses: coursesWithStats
+        });
+    } catch (error) {
+        console.error('Error fetching admin courses:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 

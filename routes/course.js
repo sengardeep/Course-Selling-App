@@ -5,16 +5,39 @@ const courseRouter = Router();
 
 courseRouter.post('/purchase', userMiddleware, async (req, res) => {
     const { courseId } = req.body;
-    const userId = req.userId; // Assuming userMiddleware sets req.user
+    const userId = req.userId;
 
-    await purchaseModel.create({
-        userId: userId,
-        courseId: courseId
-    });
+    try {
+        // Check if course exists
+        const course = await courseModel.findById(courseId);
+        if (!course) {
+            return res.status(404).json({ error: 'Course not found' });
+        }
 
-    res.status(201).json({
-        message: 'Course purchased successfully'
-    });
+        // Check if user already purchased this course
+        const existingPurchase = await purchaseModel.findOne({
+            userId: userId,
+            courseId: courseId
+        });
+
+        if (existingPurchase) {
+            return res.status(400).json({ error: 'You have already purchased this course' });
+        }
+
+        // Create purchase
+        const purchase = await purchaseModel.create({
+            userId: userId,
+            courseId: courseId
+        });
+
+        res.status(201).json({
+            message: 'Course purchased successfully',
+            purchase: purchase
+        });
+    } catch (error) {
+        console.error('Purchase error:', error);
+        res.status(500).json({ error: 'Internal server error during purchase' });
+    }
 });
 
 courseRouter.get('/preview', async (req, res) => {

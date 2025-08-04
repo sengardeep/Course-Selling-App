@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Selling App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>CourseHub</h2>
+            </div>
+            <div class="nav-links">
+                <a href="#" id="homeBtn">Home</a>
+                <a href="#" id="coursesBtn">Courses</a>
+                <div class="auth-buttons" id="authButtons">
+                    <button id="loginBtn" class="btn btn-outline">Login</button>
+                    <button id="signupBtn" class="btn btn-primary">Sign Up</button>
+                </div>
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <span id="userName">Welcome, User!</span>
+                    <button id="myPurchasesBtn" class="btn btn-outline">My Purchases</button>
+                    <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                </div>
+                <div class="admin-menu" id="adminMenu" style="display: none;">
+                    <span id="adminName">Admin Panel</span>
+                    <button id="manageCourses" class="btn btn-outline">Manage Courses</button>
+                    <button id="adminLogoutBtn" class="btn btn-secondary">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="homeSection" class="section active">
+            <div class="hero">
+                <h1>Learn New Skills with Our Premium Courses</h1>
+                <p>Discover thousands of courses from expert instructors</p>
+                <button id="browseCoursesBtn" class="btn btn-primary btn-large">Browse Courses</button>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="coursesSection" class="section">
+            <div class="container">
+                <h2>Available Courses</h2>
+                <div id="coursesGrid" class="courses-grid">
+                    <!-- Courses will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- My Purchases Section -->
+        <section id="purchasesSection" class="section">
+            <div class="container">
+                <h2>My Purchased Courses</h2>
+                <div id="purchasesGrid" class="courses-grid">
+                    <!-- Purchased courses will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Panel Section -->
+        <section id="adminSection" class="section">
+            <div class="container">
+                <div class="admin-controls">
+                    <h2>📊 Admin Dashboard</h2>
+                    <button id="addCourseBtn" class="btn btn-primary">➕ Add New Course</button>
+                </div>
+                <div id="adminStats" class="admin-stats">
+                    <!-- Stats will be loaded here -->
+                </div>
+                <div id="adminCoursesGrid" class="courses-grid">
+                    <!-- Admin courses will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label>Account Type:</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="userType" value="user" checked> 
+                            <span>🎓 Student</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="userType" value="admin"> 
+                            <span>👨‍🏫 Instructor</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupFirstName">First Name:</label>
+                    <input type="text" id="signupFirstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupLastName">Last Name:</label>
+                    <input type="text" id="signupLastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" required minlength="6" placeholder="At least 6 characters">
+                </div>
+                <div class="form-group">
+                    <label>Account Type:</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="signupUserType" value="user" checked> 
+                            <span>🎓 Student</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="signupUserType" value="admin"> 
+                            <span>👨‍🏫 Instructor</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Course Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="courseModalTitle">Add New Course</h2>
+            <form id="courseForm">
+                <div class="form-group">
+                    <label for="courseTitle">Title:</label>
+                    <input type="text" id="courseTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="courseDescription">Description:</label>
+                    <textarea id="courseDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="coursePrice">Price (USD):</label>
+                    <input type="number" id="coursePrice" required min="0" step="0.01" placeholder="29.99">
+                </div>
+                <div class="form-group">
+                    <label for="courseImageUrl">Course Image URL:</label>
+                    <input type="url" id="courseImageUrl" required placeholder="https://example.com/image.jpg">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Course</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

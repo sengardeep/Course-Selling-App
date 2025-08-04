@@ -14,12 +14,14 @@ userRouter.post('/signup', async (req, res) => {
 
     const userSchema=z.object({
         email : z.string().email(),
-        password : z.string().min(5)
+        password : z.string().min(5),
+        firstName : z.string().min(1),
+        lastName : z.string().min(1)
     })
 
     const validation = userSchema.safeParse(req.body);
     if(!validation.success){
-        res.status(400).json({error : validation.error.errors});
+        return res.status(400).json({error : validation.error.errors});
     }
 
     const hashPassword = bcrypt.hashSync(password,10);
