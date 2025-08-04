@@ -197,7 +197,121 @@ The following features are currently under development or planned for future rel
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+We welcome contributions from the community! This project thrives on collaboration and we'd love to have you as part of our journey to build an amazing course selling platform.
+
+### 🌟 How to Contribute
+
+#### 🐛 **Reporting Bugs**
+- Check if the issue already exists in the [Issues](https://github.com/sengardeep/Course-Selling-App/issues) section
+- If not, create a new issue with:
+  - Clear description of the bug
+  - Steps to reproduce
+  - Expected vs actual behavior
+  - Screenshots if applicable
+  - Your environment details (OS, browser, Node.js version)
+
+#### ✨ **Suggesting Features**
+- Open an issue with the label "enhancement"
+- Describe the feature and its benefits
+- Explain how it fits with the project goals
+- Provide mockups or examples if possible
+
+#### 🔧 **Code Contributions**
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+3. **Make your changes** following our coding standards
+4. **Test thoroughly** - ensure all existing functionality works
+5. **Commit with clear messages**: `git commit -m "Add amazing feature"`
+6. **Push to your branch**: `git push origin feature/amazing-feature`
+7. **Open a Pull Request** with a detailed description
+
+#### 📝 **Documentation**
+- Improve existing documentation
+- Add examples and use cases
+- Fix typos and grammar
+- Translate documentation to other languages
+
+### 🎯 **Good First Issues**
+
+New to the project? Look for issues labeled:
+- `good first issue` - Perfect for beginners
+- `help wanted` - We'd love community help
+- `documentation` - Documentation improvements needed
+
+### 📋 **Development Guidelines**
+
+#### **Code Style**
+- Use consistent indentation (2 spaces)
+- Follow existing naming conventions
+- Add comments for complex logic
+- Keep functions small and focused
+
+#### **Commit Messages**
+- Use present tense ("Add feature" not "Added feature")
+- Keep first line under 50 characters
+- Include detailed description if needed
+- Reference issue numbers when applicable
+
+#### **Testing**
+- Test your changes thoroughly
+- Ensure all existing functionality works
+- Add tests for new features when possible
+- Check responsiveness on different devices
+
+### 🚀 **Development Setup**
+
+```bash
+# Fork and clone the repository
+git clone https://github.com/your-username/Course-Selling-App.git
+cd Course-Selling-App
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
+# Start development server
+npm run dev
+```
+
+### 🎉 **Recognition**
+
+All contributors will be:
+- Listed in our Contributors section
+- Mentioned in release notes for their contributions
+- Given credit in relevant documentation
+- Invited to join our contributor community
+
+### 📞 **Getting Help**
+
+- Join our discussions in the Issues section
+- Reach out to maintainers for guidance
+- Check existing documentation and code examples
+- Don't hesitate to ask questions - we're here to help!
+
+### 🔄 **Types of Contributions We Need**
+
+- **Frontend Developers**: Enhance UI/UX, add new features
+- **Backend Developers**: Improve APIs, add security features
+- **Designers**: Create mockups, improve user experience
+- **DevOps Engineers**: Improve deployment, add CI/CD
+- **Technical Writers**: Improve documentation, write tutorials
+- **Testers**: Find bugs, improve test coverage
+- **Product Managers**: Define features, improve user stories
+
+### 📜 **Code of Conduct**
+
+By participating in this project, you agree to:
+- Be respectful and inclusive
+- Provide constructive feedback
+- Help create a welcoming environment
+- Focus on what's best for the community
+
+---
+
+**Ready to contribute? We can't wait to see what you'll build with us! 🚀**
 
 ## 📝 License
 
